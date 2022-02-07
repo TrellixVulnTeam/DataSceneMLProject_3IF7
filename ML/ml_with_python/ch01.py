@@ -20,7 +20,7 @@ out:
 dict_keys(['data', 'target', 'frame', 'target_names', 'DESCR', 'feature_names', 'filename', 'data_module'])
 
 target_names - массив строк
-feature_names - feature_names  –  это  список  строк  с  описанием  каждого признака
+feature_names –  это  список  строк  с  описанием  каждого признака
 target - Сами  данные  записаны  в  массивах
 data -массив Nympu
 DESCR – это краткое описание набора данных
@@ -116,11 +116,12 @@ print("форма массива y_test: {}".format(y_test.shape))
 """
 
 # создаем dataframe из данных в массиве X_train
-# маркируем столбцы, используя строки в iris_dataset.feature_names
+# маркируем столбцы, используя строки в iris_dataset.feature_names (feature_names –  это  список  строк  с  описанием  каждого признака)
 iris_dataframe = pd.DataFrame(X_train, columns=iris_dataset.feature_names)
 
 # В  pandas  есть  функция  для  создания парных  диаграмм  рассеяния  под  названием  scatter_matrix
 # создаем матрицу рассеяния из dataframe, цвет точек задаем с помощью y_train
+# 
 pd.plotting.scatter_matrix(iris_dataframe, c=y_train, figsize=(15, 15),
                            marker='o', hist_kwds={'bins': 20}, s=60,
                            alpha=.8, cmap=mglearn.cm3)
