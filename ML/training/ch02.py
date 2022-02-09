@@ -91,6 +91,10 @@ print("форма массива y: {}".format(y.shape))
 
 # Алгоритм k ближайших  соседей
 
+# используются три ближайших соседа (n_neighbors=1) и смотрим это на графике
+mglearn.plots.plot_knn_classification(n_neighbors=1)
+plt.show()
+
 # используются три ближайших соседа (n_neighbors=3) и смотрим это на графике
 mglearn.plots.plot_knn_classification(n_neighbors=3)
 plt.show()
