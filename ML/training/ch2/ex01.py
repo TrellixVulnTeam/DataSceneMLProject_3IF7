@@ -5,7 +5,6 @@
 
 """
 
-
 import numpy as np
 import matplotlib.pyplot as plt
 import mglearn
@@ -31,7 +30,6 @@ plt.plot(X, y, 'o')
 plt.ylim(-3, 3)
 plt.xlabel("Признак")
 plt.ylabel("Целевая переменная")
-
 plt.show()
 
 

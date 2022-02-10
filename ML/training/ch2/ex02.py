@@ -4,6 +4,10 @@
   Подходит для небольших наборов данных, хорош в качестве базовой   модели, прост в объяснении.
 
 """
+# KNeighborsClassifier()
+# В k Классификация соседей KNeighborsClassifier — наиболее часто используемый метод.
+# Оптимальный выбор стоимостиk сильно зависит от данных: как правило, более крупный k подавляет влияние шума,
+# но делает границы классификации менее четкими.
 
 from sklearn.model_selection import train_test_split
 import matplotlib.pyplot as plt
@@ -12,7 +16,6 @@ import mglearn
 from sklearn.datasets import load_breast_cancer
 from sklearn.neighbors import KNeighborsClassifier
 
-# АНАЛИЗ KNeighborsClassifier()
 
 # генерируем набор данных
 X, y = mglearn.datasets.make_forge()
@@ -37,6 +40,7 @@ X_train, X_test, y_train, y_test = train_test_split(
 
 training_accuracy = []
 test_accuracy = []
+
 # пробуем n_neighbors от 1 до 10
 neighbors_settings = range(1, 11)
 
@@ -58,10 +62,11 @@ plt.xlabel("количество соседей")
 plt.legend()
 plt.show()
 
-# n_neighbors=1 -  устанавливаем одного ближайшего соседа
+# n_neighbors=1 -mустанавливаем одного ближайшего соседа
 mglearn.plots.plot_knn_regression(n_neighbors=1)
 plt.show()
 
+# n_neighbors=1 -mустанавливаем одного ближайшего соседа
 mglearn.plots.plot_knn_regression(n_neighbors=3)
 plt.show()
 
