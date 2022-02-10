@@ -1,3 +1,7 @@
+"""
+  методы ML обучения с учителем:
+
+"""
 import mglearn
 from matplotlib import pyplot as plt
 

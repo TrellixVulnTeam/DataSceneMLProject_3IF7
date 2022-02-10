@@ -1,8 +1,15 @@
+"""
+  методы ML обучения с учителем:
+  Ближайшие соседи
+  Подходит для небольших наборов данных, хорош в качестве базовой   модели, прост в объяснении.
+
+"""
+
+from sklearn.model_selection import train_test_split
 import matplotlib.pyplot as plt
 import mglearn
 
 from sklearn.datasets import load_breast_cancer
-from sklearn.model_selection import train_test_split
 from sklearn.neighbors import KNeighborsClassifier
 
 # АНАЛИЗ KNeighborsClassifier()

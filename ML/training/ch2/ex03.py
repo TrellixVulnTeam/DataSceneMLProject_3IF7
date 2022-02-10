@@ -1,9 +1,13 @@
+"""
+  методы ML обучения с учителем:
+  Ближайшие соседи
+  Подходит для небольших наборов данных, хорош в качестве базовой   модели, прост в объяснении.
 
+"""
 
 """
 Алгоритм  регрессии k   ближайших  соседей  реализован  в  классе
-KNeighborsRegressor.  Он  используется  точно  так  же,  как
-KNeighborsClassifier:
+KNeighborsRegressor. Он  используется  точно  так  же,  как KNeighborsClassifier:
 """
 import matplotlib.pyplot as plt
 import mglearn
