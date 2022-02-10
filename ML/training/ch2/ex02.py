@@ -1,8 +1,7 @@
-import numpy as np
 import matplotlib.pyplot as plt
 import mglearn
 
-from sklearn.datasets import load_breast_cancer, load_boston
+from sklearn.datasets import load_breast_cancer
 from sklearn.model_selection import train_test_split
 from sklearn.neighbors import KNeighborsClassifier
 
@@ -24,7 +23,7 @@ for n_neighbors, ax in zip([1, 3, 9], axes):
 axes[0].legend(loc=3)
 plt.show()
 
-"""
+
 cancer = load_breast_cancer()
 X_train, X_test, y_train, y_test = train_test_split(
     cancer.data, cancer.target, stratify=cancer.target, random_state=66)
@@ -35,7 +34,6 @@ test_accuracy = []
 neighbors_settings = range(1, 11)
 
 
-# АНАЛИЗ KNeighborsClassifier
 
 for n_neighbors in neighbors_settings:
     # строим модель
@@ -53,9 +51,12 @@ plt.xlabel("количество соседей")
 plt.legend()
 plt.show()
 
-"""
+# n_neighbors=1 -  устанавливаем одного ближайшего соседа
+mglearn.plots.plot_knn_regression(n_neighbors=1)
+plt.show()
 
-
+mglearn.plots.plot_knn_regression(n_neighbors=3)
+plt.show()
 
 
 
