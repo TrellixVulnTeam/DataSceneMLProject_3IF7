@@ -7,7 +7,7 @@ from sklearn.datasets import load_iris
 from sklearn.model_selection import train_test_split
 from sklearn.neighbors import KNeighborsClassifier
 
-# данный код к книге "Введение в машинное обучение с помощью Python [2017]"
+
 
 # загрузить данных  Iris, вызвав функцию load_iris:
 iris_dataset = load_iris()
