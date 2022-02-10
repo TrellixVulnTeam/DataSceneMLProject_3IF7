@@ -2,7 +2,7 @@ Book introduction_to_ml_with_python
 
 (https://mybinder.org/v2/gh/amueller/introduction_to_ml_with_python/master)
 
-# Introduction to Machine Learning with Python
+# Machine Learning with Python
 
 training/ch1/ex01 -> работа с данными 
 training/ch1/ex02 -> Теперь мы можем начать строить реальную модель машинного обучения (В даном примере мы будем использовать модель обучния "'k' ближайших  соседей" )
