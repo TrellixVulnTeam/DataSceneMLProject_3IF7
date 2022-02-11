@@ -4,8 +4,10 @@ import pandas as pd
 from sklearn.datasets import load_iris
 from sklearn.model_selection import train_test_split
 
+
 # загрузить данных  Iris, вызвав функцию load_iris:
 iris_dataset = load_iris()
+
 print("Ключи iris_dataset: \n{}".format(iris_dataset.keys()))
 
 """
