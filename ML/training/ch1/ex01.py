@@ -4,9 +4,9 @@ import pandas as pd
 from sklearn.datasets import load_iris
 from sklearn.model_selection import train_test_split
 
-
 # загрузить данных  Iris, вызвав функцию load_iris:
 iris_dataset = load_iris()
+
 
 print("Ключи iris_dataset: \n{}".format(iris_dataset.keys()))
 
@@ -113,8 +113,8 @@ iris_dataframe = pd.DataFrame(X_train, columns=iris_dataset.feature_names)
 # В  pandas  есть  функция  для  создания парных  диаграмм  рассеяния  под  названием  pd.plotting.scatter_matrix()
 # создаем матрицу рассеяния из dataframe, цвет точек задаем с помощью y_train
 
-pd.plotting.scatter_matrix(iris_dataframe, c=y_train, figsize=(15, 15),
-                           marker='o', hist_kwds={'bins': 20}, s=60,
+pd.plotting.scatter_matrix(iris_dataframe, c=y_train, figsize=(10, 7),
+                           marker='o', hist_kwds={'bins': 20}, s=40,
                            alpha=.8, cmap=mglearn.cm3)
 
 plt.show()
