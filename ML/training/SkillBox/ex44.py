@@ -9,17 +9,14 @@
 
 """
 
+import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
-from sklearn.linear_model import LinearRegression
 from numpy.linalg import norm
+from sklearn.linear_model import LinearRegression
+from sklearn.linear_model import Ridge
 from sklearn.metrics import mean_squared_error
 from sklearn.model_selection import train_test_split
-from matplotlib import pyplot
-from sklearn.linear_model import Ridge
-from sklearn.model_selection import train_test_split
-
 
 data = pd.read_csv('../data/non_linear.csv', sep=',')
 data.head()
@@ -39,9 +36,7 @@ def generate_degrees(source_data: list, degree: int):
     ]).T
 
 def train_polynomial(degree, data):
-    """Генерим данные, тренируем модель
-    дополнительно рисуем график
-    """
+    """Генерим данные, тренируем модель дополнительно рисуем график  """
     X = generate_degrees(data['x_train'], degree)
     y = data.y_train.values
     X_train, X_valid, y_train, y_valid = train_test_split(X, y, test_size=0.2, random_state=10)
