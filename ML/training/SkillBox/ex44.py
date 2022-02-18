@@ -18,13 +18,13 @@ from sklearn.linear_model import Ridge
 from sklearn.metrics import mean_squared_error
 from sklearn.model_selection import train_test_split
 
+
 data = pd.read_csv('../data/non_linear.csv', sep=',')
-data.head()
+print(data.head())
 
 # основной график
 plt.scatter(data.x_train, data.y_train, 40, 'g', 'o', alpha=0.8)
 plt.show()
-
 
 
 def generate_degrees(source_data: list, degree: int):
@@ -35,8 +35,10 @@ def generate_degrees(source_data: list, degree: int):
           source_data**n for n in range(1, degree + 1)
     ]).T
 
+
+
 def train_polynomial(degree, data):
-    """Генерим данные, тренируем модель дополнительно рисуем график  """
+    """Генерим данные, тренируем модель дополнительно рисуем график """
     X = generate_degrees(data['x_train'], degree)
     y = data.y_train.values
     X_train, X_valid, y_train, y_valid = train_test_split(X, y, test_size=0.2, random_state=10)
@@ -49,15 +51,20 @@ def train_polynomial(degree, data):
         "Степень полинома %d\nОшибка на валидации %.3f\nОшибка на обучении %.3f" %
         (degree, error_valid, error_train)
     )
+	# порядок на тестовых данных
     order_test = np.argsort(X_valid[:,0])
+    print(order_test)
+    print(X_valid[:, 0])
     plt.scatter(X_valid[:,0][order_test], y_valid[order_test], 40, 'r', 'o', alpha=0.8)
     print("Норма вектора весов \t||w|| = %.2f" % (norm(model.coef_)))
+
     # визуализируем решение
     x_linspace = np.linspace(data['x_train'].min(), data['x_train'].max(), num=100)
     y_linspace = model.predict(generate_degrees(x_linspace, degree))
     plt.plot(x_linspace, y_linspace)
     return error_valid, error_train, norm(model.coef_)
 
+# для сохранение результатов
 degrees = []
 valid_errors = []
 train_errors = []
@@ -90,42 +97,50 @@ valid_errors.append(error_valid)
 train_errors.append(error_train)
 w_norm.append(coef_norm)
 
-
+# создание графика что бы увидеть в каком месте данные становятся переобученными
 fig, ax = plt.subplots()
 ax.plot(degrees, valid_errors, 'k--', label='Validation error')
 ax.plot(degrees, train_errors, 'k:', label='Train error')
 
 legend = ax.legend(loc='upper center', shadow=True, fontsize='x-large')
-
 plt.show()
+
 
 
 #plt.scatter(data['x_train'], data['y_train'], 40, 'g', 'o', alpha=0.8, label='data')
 
+# модель с регулерезацией
 model_ridge = Ridge(alpha=0.01)
+# модель без регулерезации
 model_linear = Ridge(alpha=0.0)
 degree = 10
 
 X = generate_degrees(data['x_train'], degree)
 y = data['y_train']
-# обучаем линейную регрессию с  регуляризацией
+# обучаем модель
 model_ridge.fit(X, y)
 model_linear.fit(X, y)
 
 x_linspace = np.linspace(data['x_train'].min(), data['x_train'].max(), num=100)
 
+# предсказание линейное регрессии
 y_linspace_linear = model_linear.predict(generate_degrees(x_linspace, degree))
+# предсказание для ридж регрессии 
 y_linspace_ridge = model_ridge.predict(generate_degrees(x_linspace, degree))
 
+# построение графиков
 plt.plot(x_linspace, y_linspace_linear)
 plt.plot(x_linspace, y_linspace_ridge)
 
-
 plt.show()
+
 
 print("Норма вектора весов Ridge \t||w|| = %.2f" % (norm(model_ridge.coef_)))
 print("Норма вектора весов Linear \t||w|| = %.2f" % (norm(model_linear.coef_)))
 
+
+
+""" подбор правельного значение регулерезации для исключения случаев переобучения """
 
 X_train, X_test, y_train, y_test = train_test_split(
     X, y, test_size=0.2, random_state=42
@@ -133,6 +148,7 @@ X_train, X_test, y_train, y_test = train_test_split(
 
 print(X_train.shape, X_test.shape)
 
+# значение регулерезации для исключения случаев переобучения
 alphas = [0.1, 0.15, 0.35 ,0.5,0.8]
 
 best_alpha = alphas[0]
